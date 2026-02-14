@@ -1,11 +1,17 @@
-# Slack_for_school — Project Summary
+# Slack_for_school — AI-Native HUD Project
 
-This workspace contains several static UI mockups (HTML + Tailwind) and variants organized as small projects. Each project includes a `code.html` preview and a `screen.png` thumbnail for quick reference.
+An AI-powered "Heads-Up Display" for Slack designed to reduce cognitive overload and enable deep work through **Sanctuary Mode** and intelligent task prioritization.
+
+## Overview
+
+This workspace contains:
+- Frontend UI mockups (HTML + Tailwind) with Sanctuary Mode and priority HUD designs.
+- Vercel-ready backend with API endpoints for task sync, flare system, and metrics.
+- Production-ready deployment configuration.
 
 Projects
 
 - [active_build_hud/code.html](active_build_hud/code.html) — Priority Funnel HUD (mobile-width HUD mockup). See [active_build_hud/screen.png](active_build_hud/screen.png).
-- [deployment_dashboard/code.html](deployment_dashboard/code.html) — Deployment dashboard mockup. See [deployment_dashboard/screen.png](deployment_dashboard/screen.png).
 - [generated_screen_1/code.html](generated_screen_1/code.html) — Generated variant 1. See [generated_screen_1/screen.png](generated_screen_1/screen.png).
 - [generated_screen_2/code.html](generated_screen_2/code.html) — Generated variant 2. See [generated_screen_2/screen.png](generated_screen_2/screen.png).
 - [sanctuary_structural_layering_1/code.html](sanctuary_structural_layering_1/code.html) — Sanctuary Pursuit Theme (HUD + hierarchy visualization). See [sanctuary_structural_layering_1/screen.png](sanctuary_structural_layering_1/screen.png).
@@ -128,11 +134,59 @@ If you want, I can:
 
 ---
 
+## Backend API
+
+See [api/README.md](api/README.md) for full endpoint documentation.
+
+### Quick API Overview
+
+The `/api` folder contains Vercel serverless functions:
+
+- **GET** `/api/health` — Health check
+- **GET** `/api/tasks` — Fetch prioritized tasks from Slack, LMS, GitHub
+- **POST** `/api/flare` — Drop a context-heavy help request
+- **GET** `/api/flare` — Retrieve flares
+- **POST** `/api/sync` — Trigger external data sync
+- **GET** `/api/metrics` — Fetch performance metrics (tokens, latency, deep work timer)
+- **POST** `/api/auth` — Simple auth (MVP)
+
+All endpoints support CORS and return JSON.
+
+### Local Development
+
+1. Copy `.env.local.example` to `.env.local` and fill in credentials.
+2. Install dependencies: `npm install`
+3. Run dev server: `vercel dev`
+4. Visit `http://localhost:3000/api/health` to test.
+
+### Frontend Integration Example
+
+```js
+// Fetch tasks from the HUD
+fetch('/api/tasks?priority=URGENT')
+  .then(res => res.json())
+  .then(data => console.log(data.data));
+
+// Drop a flare
+fetch('/api/flare', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    userId: 'alex_stitch',
+    message: 'Stuck on recursion depth',
+    targetAudience: 'mentors'
+  })
+})
+  .then(res => res.json())
+  .then(flare => console.log('Flare dropped:', flare.id));
+```
+
+---
+
 Quick open (from repo root):
 
 ```bash
 open active_build_hud/code.html \
-	deployment_dashboard/code.html \
 	generated_screen_1/code.html \
 	generated_screen_2/code.html \
 	sanctuary_structural_layering_1/code.html \

@@ -1,0 +1,27 @@
+{
+  "name": "slack-for-school-backend",
+  "version": "1.0.0",
+  "description": "AI-Native HUD backend for Slack integration with Sanctuary Mode",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "vercel build",
+    "test": "node --test 'test/**/*.test.js'"
+  },
+  "keywords": [
+    "ai",
+    "hud",
+    "sanctuary",
+    "slack",
+    "pursuit"
+  ],
+  "author": "Blanca Cruz",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "node-fetch": "^2.7.0"
+  },
+  "devDependencies": {
+    "vercel": "^34.0.0"
+  }
+}
