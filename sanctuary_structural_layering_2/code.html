@@ -187,4 +187,60 @@
 <div class="fixed inset-0 pointer-events-none opacity-20 z-[-1]">
 <img class="w-full h-full object-cover" data-alt="Abstract dark digital grid and nodes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZmJRoFAFSN62Ws4pBcFYt877X7ykGlPPnbUMEkh13m9XFn99vq3whBZJlOWoVv98T6IEJluyRetg6NZQQwajFpQh7D3D4DAepTwOmm_OXWr06oMv2SilWWo3wk1oJZCdXLkeMg8mcg9oEnG1KR5S0cqQt1w41zj3UK2_JLDLDXST0gPd1bGF5HYFjyEM07UjbturltpzGMDX_5VbEdBSIDDVCm2HicmHm5JYHE8Scx5x0xvNhtXuB-G0SN-ApGNFUk9QR4UskQFqS"/>
 </div>
+
+<script>
+  const API_BASE = window.location.origin;
+  let sanctuaryActive = true;
+  
+  // Long-press exit button with progress bar
+  const exitBtn = document.querySelector('button');
+  const progressBar = document.querySelector('.intentional-friction-bar');
+  let exitTimer;
+  
+  if (exitBtn && progressBar) {
+    exitBtn.addEventListener('mousedown', () => {
+      progressBar.style.transition = 'width 1.5s linear';
+      progressBar.style.width = '100%';
+      
+      exitTimer = setTimeout(() => {
+        // Disable sanctuary mode
+        document.querySelector('body').classList.remove('sanctuary-active');
+        document.querySelector('.absolute.inset-0.sanctuary-blur')?.classList.remove('sanctuary-blur');
+        alert('🔓 Sanctuary Mode Disengaged. Welcome back.');
+      }, 1500);
+    });
+    
+    exitBtn.addEventListener('mouseup', () => {
+      clearTimeout(exitTimer);
+      progressBar.style.transition = 'width 0.3s ease-out';
+      progressBar.style.width = '35%';
+    });
+    
+    exitBtn.addEventListener('mouseleave', () => {
+      clearTimeout(exitTimer);
+      progressBar.style.transition = 'width 0.3s ease-out';
+      progressBar.style.width = '35%';
+    });
+  }
+  
+  // Optional: Fetch metrics from API to update display
+  async function fetchMetrics() {
+    try {
+      const res = await fetch(`${API_BASE}/api/metrics`);
+      const data = await res.json();
+      console.log('Metrics loaded:', data);
+      // Could update UI with: structural fidelity, constraint tension, etc.
+    } catch (err) {
+      console.error('Error fetching metrics:', err);
+    }
+  }
+  
+  // Initialize on page load
+  document.addEventListener('DOMContentLoaded', async () => {
+    console.log('Sanctuary Mode initialized');
+    await fetchMetrics();
+  });
+</script>
+
+</body></html>
 </body></html>

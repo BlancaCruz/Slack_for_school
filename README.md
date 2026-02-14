@@ -12,10 +12,7 @@ This workspace contains:
 Projects
 
 - [active_build_hud/code.html](active_build_hud/code.html) — Priority Funnel HUD (mobile-width HUD mockup). See [active_build_hud/screen.png](active_build_hud/screen.png).
-- [generated_screen_1/code.html](generated_screen_1/code.html) — Generated variant 1. See [generated_screen_1/screen.png](generated_screen_1/screen.png).
-- [generated_screen_2/code.html](generated_screen_2/code.html) — Generated variant 2. See [generated_screen_2/screen.png](generated_screen_2/screen.png).
-- [sanctuary_structural_layering_1/code.html](sanctuary_structural_layering_1/code.html) — Sanctuary Pursuit Theme (HUD + hierarchy visualization). See [sanctuary_structural_layering_1/screen.png](sanctuary_structural_layering_1/screen.png).
-- [sanctuary_structural_layering_2/code.html](sanctuary_structural_layering_2/code.html) — Sanctuary Structural Layering (alternate color/variant). See [sanctuary_structural_layering_2/screen.png](sanctuary_structural_layering_2/screen.png).
+- [sanctuary_structural_layering_2/code.html](sanctuary_structural_layering_2/code.html) — Sanctuary Structural Layering (HUD + hierarchy visualization). See [sanctuary_structural_layering_2/screen.png](sanctuary_structural_layering_2/screen.png).
 
 **Stitch Blueprint (Operational HUD + Sanctuary Mode)**
 
@@ -187,9 +184,6 @@ Quick open (from repo root):
 
 ```bash
 open active_build_hud/code.html \
-	generated_screen_1/code.html \
-	generated_screen_2/code.html \
-	sanctuary_structural_layering_1/code.html \
 	sanctuary_structural_layering_2/code.html
 ```
 

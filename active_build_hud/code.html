@@ -218,13 +218,13 @@
 <button class="p-3 text-white/30 hover:text-white/70">
 <span class="material-symbols-outlined text-xl">add_circle</span>
 </button>
-<input class="flex-1 bg-transparent border-none focus:ring-0 text-[15px] text-white/90 placeholder:text-white/10 py-3 px-1" placeholder="Message #sprint-ai-logic" type="text"/>
+<input id="flare-input" class="flex-1 bg-transparent border-none focus:ring-0 text-[15px] text-white/90 placeholder:text-white/10 py-3 px-1" placeholder="Drop a Flare..." type="text"/>
 <div class="flex pr-2">
-<button class="p-2 text-white/30 hover:text-verification-red transition-colors">
+<button id="flare-btn" class="p-2 text-white/30 hover:text-verification-red transition-colors" title="Drop a Flare for help">
 <span class="material-symbols-outlined text-xl">alternate_email</span>
 </button>
-<button class="p-2 text-white/30 hover:text-active-blue transition-colors">
-<span class="material-symbols-outlined text-xl">send</span>
+<button id="toggle-sanctuary" class="p-2 text-white/30 hover:text-active-blue transition-colors" title="Toggle Sanctuary Mode">
+<span class="material-symbols-outlined text-xl">energy_savings_leaf</span>
 </button>
 </div>
 </div>
@@ -232,5 +232,106 @@
 </main>
 <div class="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-32 h-1 bg-white/20 rounded-full pointer-events-none"></div>
 </div>
+
+<script>
+  // API Base URL (works for both local dev and production)
+  const API_BASE = '';
+
+  // State
+  let sanctuaryActive = false;
+  let currentUserId = 'alex_stitch';
+  let tasks = [];
+
+  // Helper: Fetch tasks from API
+  async function fetchTasks() {
+    try {
+      const res = await fetch(`${API_BASE}/api/tasks?priority=URGENT`);
+      if (!res.ok) throw new Error('Failed to fetch tasks');
+      const data = await res.json();
+      tasks = data.data || [];
+      console.log('Tasks loaded:', tasks);
+    } catch (err) {
+      console.error('Error fetching tasks:', err);
+    }
+  }
+
+  // Sanctuary Mode Toggle
+  document.getElementById('toggle-sanctuary')?.addEventListener('click', () => {
+    sanctuaryActive = !sanctuaryActive;
+    document.body.classList.toggle('sanctuary-active', sanctuaryActive);
+    console.log('Sanctuary Mode:', sanctuaryActive ? 'ON' : 'OFF');
+  });
+
+  // Flare System
+  document.getElementById('flare-btn')?.addEventListener('click', async () => {
+    const input = document.getElementById('flare-input');
+    const message = input?.value?.trim();
+
+    if (!message) {
+      alert('Please enter a message for your Flare');
+      return;
+    }
+
+    try {
+      const res = await fetch(`${API_BASE}/api/flare`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: currentUserId,
+          taskId: 'sprint-ai-logic',
+          message: message,
+          context: 'Dropped from Priority Funnel HUD',
+          targetAudience: 'mentors'
+        })
+      });
+
+      if (!res.ok) throw new Error('Failed to drop flare');
+      const flare = await res.json();
+
+      input.value = '';
+      console.log('Flare dropped:', flare.flare.id);
+      alert(`✅ Flare dropped! ID: ${flare.flare.id}`);
+    } catch (err) {
+      console.error('Error dropping flare:', err);
+      alert('Failed to drop flare. Check console.');
+    }
+  });
+
+  // Allow Enter key to drop flare
+  document.getElementById('flare-input')?.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      document.getElementById('flare-btn')?.click();
+    }
+  });
+
+  // Initialize on page load
+  document.addEventListener('DOMContentLoaded', async () => {
+    console.log('Priority Funnel HUD loaded');
+    await fetchTasks();
+  });
+
+  // Add Sanctuary CSS if not already in stylesheet
+  if (!document.getElementById('sanctuary-styles')) {
+    const style = document.createElement('style');
+    style.id = 'sanctuary-styles';
+    style.textContent = `
+      .sanctuary-active {
+        --sanctuary-blur: blur(12px) grayscale(80%) brightness(0.4);
+      }
+      .sanctuary-active main {
+        filter: var(--sanctuary-blur);
+        pointer-events: none;
+        transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .sanctuary-active aside {
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: -15px 0 45px rgba(0,0,0,0.6);
+        background: rgba(15, 23, 42, 0.95);
+        backdrop-filter: blur(10px);
+      }
+    `;
+    document.head.appendChild(style);
+  }
+</script>
 
 </body></html>
