@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Stitch Blueprint - Priority Funnel HUD</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "pursuit-aubergine": "#4A154B",
+                        "active-blue": "#1164A3",
+                        "verification-red": "#E01E5A",
+                        "background-dark": "#0B0809",
+                        "sidebar-hover": "#3F0E40"
+                    },
+                    fontFamily: {
+                        "sans": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply font-sans;
+            }
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+        }
+        .status-pulse {
+            animation: pulse-red 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-red {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.9); }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark text-white overflow-hidden">
+<div class="flex h-screen w-full max-w-[430px] mx-auto bg-black border-x border-white/10 relative overflow-hidden">
+<aside class="w-[260px] h-full bg-pursuit-aubergine flex-shrink-0 flex flex-col z-20 shadow-2xl border-r border-black/20">
+<div class="p-4 pt-8 flex items-center justify-between border-b border-black/10 hover:bg-sidebar-hover cursor-pointer group">
+<div class="flex flex-col">
+<h2 class="text-white font-black text-[15px] leading-tight flex items-center gap-1">
+                        STITCH BLUEPRINT
+                        <span class="material-symbols-outlined text-xs">keyboard_arrow_down</span>
+</h2>
+<div class="flex items-center gap-1.5">
+<span class="size-2 bg-green-500 rounded-full"></span>
+<span class="text-[13px] text-white/70 font-medium">Alex_Stitch</span>
+</div>
+</div>
+<div class="size-8 rounded-lg bg-white/10 flex items-center justify-center group-hover:bg-white/20">
+<span class="material-symbols-outlined text-white text-lg">edit_square</span>
+</div>
+</div>
+<div class="px-3 py-3">
+<button class="w-full flex items-center gap-3 bg-black/10 hover:bg-black/20 transition-all p-2 rounded border border-white/5 group active:scale-[0.98]">
+<div class="size-7 rounded bg-active-blue flex items-center justify-center shadow-lg shadow-black/20">
+<span class="material-symbols-outlined text-white text-sm">energy_savings_leaf</span>
+</div>
+<div class="flex flex-col text-left">
+<span class="text-[13px] font-bold text-white leading-tight">Focus Switch</span>
+<span class="text-[11px] text-white/50 leading-none">Enter Sanctuary</span>
+</div>
+<span class="material-symbols-outlined ml-auto text-white/30 group-hover:text-white/60 text-[16px]">bolt</span>
+</button>
+</div>
+<nav class="flex-1 overflow-y-auto px-2 space-y-1">
+<div class="text-[10px] uppercase tracking-[0.1em] text-white/40 px-3 pt-2 pb-1 font-extrabold">Priority Funnel</div>
+<div class="group flex flex-col gap-0.5 px-3 py-3 rounded mb-2 border-l-4 border-verification-red bg-verification-red/15 cursor-pointer relative overflow-hidden transition-colors">
+<div class="flex items-center justify-between">
+<span class="text-white font-bold text-[15px] truncate tracking-tight">Sprint: AI Logic Constraints</span>
+<span class="text-[9px] bg-verification-red px-1.5 py-0.5 rounded text-white font-black tracking-tight">URGENT</span>
+</div>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="size-2 rounded-full bg-verification-red status-pulse"></span>
+<span class="text-red-200 text-[13px] font-medium leading-none">Instructor Offline • Drop a Flare</span>
+</div>
+</div>
+<div class="group flex flex-col gap-0.5 px-3 py-2.5 rounded cursor-pointer bg-active-blue border-l-4 border-white/20 shadow-inner">
+<div class="flex items-center justify-between">
+<span class="text-white font-bold text-[15px] truncate">Prompt Library V2</span>
+<span class="material-symbols-outlined text-white/60 text-[16px]">attachment</span>
+</div>
+<p class="text-white/70 text-[13px]">System Constraints Document</p>
+</div>
+<div class="group flex flex-col gap-0.5 px-3 py-2 rounded cursor-pointer hover:bg-sidebar-hover border-l-4 border-transparent">
+<div class="flex items-center justify-between">
+<span class="text-white/70 font-medium text-[15px] truncate">Fellowship Random</span>
+<span class="text-[11px] text-white/40 font-bold">12</span>
+</div>
+<p class="text-white/30 text-[13px]">Social Chatter</p>
+</div>
+<div class="mt-6 text-[10px] uppercase tracking-[0.1em] text-white/40 px-3 pt-2 pb-1 font-extrabold">Environment</div>
+<div class="px-3 py-2 space-y-2">
+<div class="flex justify-between items-center text-[13px]">
+<span class="text-white/50">Tokens</span>
+<span class="text-verification-red font-mono text-[11px] font-bold">14.2k</span>
+</div>
+<div class="w-full bg-black/30 h-1.5 rounded-full overflow-hidden">
+<div class="bg-verification-red h-full w-[65%] shadow-[0_0_8px_rgba(224,30,90,0.4)]"></div>
+</div>
+<div class="flex justify-between items-center text-[13px]">
+<span class="text-white/50">Latency</span>
+<span class="text-white font-mono text-[11px]">240ms</span>
+</div>
+</div>
+</nav>
+<div class="p-3 bg-black/20 flex items-center gap-3 border-t border-black/10">
+<div class="relative flex-shrink-0">
+<img alt="Alex_Stitch Avatar" class="size-9 rounded-md object-cover border border-white/10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOs9jHOdyREINpvYwMyc8BxrKMF8yC0Dih096pculaPxZuyggECE9A5Sqa-sniTy7c3YTZe2s92zzyhel_fH-3JDHKB4NfuK4GY4LH7YIQdDisC6yXkQSdGquDnodjwxUvYVTL2ZFDEnprroHUkJh-PxtnLOJmNQ_WSZq-DV-vorRkRsG7fcrkugSG5FBmA8jrahITvSReXeMHDxZ9JcjXGqSXYwqLa9dEvyfVYAyac9FydnINB8E4jxd-4_7X7ueUf-KRcgjktc9z"/>
+<span class="absolute -bottom-1 -right-1 size-3 bg-green-500 border-2 border-pursuit-aubergine rounded-full"></span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="text-[13px] font-bold text-white truncate">Alex_Stitch</span>
+<span class="text-[11px] text-white/40 truncate font-semibold uppercase tracking-wide">System Architect</span>
+</div>
+<span class="material-symbols-outlined ml-auto text-white/30 text-lg hover:text-white/60 transition-colors cursor-pointer">settings</span>
+</div>
+</aside>
+<main class="flex-1 flex flex-col bg-background-dark min-w-0">
+<div class="h-10 bg-background-dark"></div>
+<header class="h-12 flex items-center justify-between px-4 border-b border-white/5">
+<div class="flex items-center gap-2">
+<span class="text-verification-red font-black text-lg">#</span>
+<h1 class="text-[15px] font-bold text-white truncate tracking-tight">sprint-ai-logic</h1>
+</div>
+<div class="flex items-center gap-4 text-white/40">
+<span class="material-symbols-outlined text-[20px] cursor-pointer hover:text-white">search</span>
+<span class="material-symbols-outlined text-[20px] cursor-pointer hover:text-white">info</span>
+</div>
+</header>
+<section class="flex-1 overflow-y-auto p-4 flex flex-col gap-6">
+<div class="flex justify-center my-2">
+<span class="text-[10px] text-white/20 font-black uppercase tracking-[0.25em] border-t border-white/5 pt-4 w-full text-center">
+                        09 December 2024
+                    </span>
+</div>
+<div class="flex gap-3 group">
+<div class="size-9 rounded bg-verification-red/10 flex-shrink-0 flex items-center justify-center border border-verification-red/20">
+<span class="material-symbols-outlined text-verification-red text-lg">terminal</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-baseline gap-2">
+<span class="text-[15px] font-bold text-verification-red">Stitch_Core</span>
+<span class="text-[11px] text-white/30 font-bold uppercase">9:44 AM</span>
+</div>
+<div class="mt-0.5">
+<p class="text-[15px] leading-relaxed text-white/80">
+                                Analyzing current logic branch... Conflict detected in <code class="bg-verification-red/10 px-1.5 py-0.5 rounded text-verification-red font-mono text-[12px] font-bold">prompt_iter_v2</code>. Recursion depth exceeds safe limits.
+                            </p>
+</div>
+</div>
+</div>
+<div class="flex gap-3 group">
+<div class="size-9 rounded-md overflow-hidden flex-shrink-0 border border-white/10">
+<img alt="Alex_Stitch Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNvF_3M6s2l0Ysv6B68mKJNUGT-7Kuzr9HC7cuCJdC0CRyH5SudFvc03_UOh25Si2sUEOGUXvzbGMUdPFFVq8N4wA7HcokPX4bNCTVuh1-BTASs_Xmu0WbpJhgeVj5JzQ7CFzihuPNMU-mgd8nLaGBW_2MRoCnukU3jS6X9OAAI-1mCDkGHcuOQ_8orEByI_0iDmSvjaefYBZH69xBygaA-dFSpfWLUN3qRo946Yvd3aHt7QXMi_7cVjeBAOeLEltHXxaN1jUDEcSQ"/>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-baseline gap-2">
+<span class="text-[15px] font-bold text-white">Alex_Stitch</span>
+<span class="text-[11px] text-white/30 font-bold uppercase">9:45 AM</span>
+</div>
+<div class="mt-0.5">
+<p class="text-[15px] leading-relaxed text-white/80">
+                                Acknowledged. Reference the system constraints doc in my HUD. I need to keep this build within the token limit before handoff.
+                            </p>
+</div>
+</div>
+</div>
+<div class="flex gap-3 group">
+<div class="size-9 rounded bg-white/5 flex-shrink-0 flex items-center justify-center border border-white/10">
+<span class="material-symbols-outlined text-white/40 text-lg">data_object</span>
+</div>
+<div class="flex flex-col w-full min-w-0">
+<div class="flex items-baseline gap-2">
+<span class="text-[15px] font-bold text-white/60">Stitch_Log</span>
+<span class="text-[11px] text-white/30 font-bold uppercase">9:46 AM</span>
+</div>
+<div class="mt-1 bg-black p-3 rounded-lg border border-white/10 font-mono text-[12px]">
+<p class="text-green-400">
+<span class="text-white/40">$</span> loading context_params.json...<br/>
+<span class="text-white/40">$</span> max_tokens: 4096<br/>
+<span class="text-white/40">$</span> system_status: <span class="text-verification-red font-black">CRITICAL_LIMIT</span>
+</p>
+</div>
+</div>
+</div>
+</section>
+<footer class="p-4 bg-background-dark border-t border-white/5">
+<div class="flex items-center gap-0 bg-white/5 rounded-lg border border-white/10 focus-within:border-white/30 transition-colors">
+<button class="p-3 text-white/30 hover:text-white/70">
+<span class="material-symbols-outlined text-xl">add_circle</span>
+</button>
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-[15px] text-white/90 placeholder:text-white/10 py-3 px-1" placeholder="Message #sprint-ai-logic" type="text"/>
+<div class="flex pr-2">
+<button class="p-2 text-white/30 hover:text-verification-red transition-colors">
+<span class="material-symbols-outlined text-xl">alternate_email</span>
+</button>
+<button class="p-2 text-white/30 hover:text-active-blue transition-colors">
+<span class="material-symbols-outlined text-xl">send</span>
+</button>
+</div>
+</div>
+</footer>
+</main>
+<div class="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-32 h-1 bg-white/20 rounded-full pointer-events-none"></div>
+</div>
+
+</body></html>

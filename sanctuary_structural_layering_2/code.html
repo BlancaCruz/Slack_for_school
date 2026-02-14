@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sanctuary Structural Layering - The Stitch Blueprint</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec1313",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221010",
+                        "slate-panel": "#0F172A",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>body {
+    font-family: "Space Grotesk", sans-serif;
+    overflow: hidden
+    }
+.sanctuary-blur {
+    filter: blur(12px) grayscale(80%) brightness(0.4)
+    }
+.hud-glass {
+    backdrop-filter: blur(10px);
+    background-color: rgba(15, 23, 42, 0.85)
+    }
+.intentional-friction-bar {
+    width: 35%;
+    /* Representative state of long-press progress */
+    }
+.grain-overlay {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuDiQS6Tq-5U2CkhGfsXYnK7RVegCdCo2Rx9rcN4nMuksWrnJk4ZNELoPthV2CRNdZo5x1gORhCoBUwaSgSZF5U2jxhNfAUh-BIMy5K0sQbkUFQQW_zpc4I80L4M7IikfOLox8kAWv4jZX0XXtyR0ItvWT0FkqhBfU_SG40WAnMQ94bgQhikg4rfql3ovKV9NmnNWVAVZuqgq5IbNj7X6sV_wSVgj_WoBV6w4G3JQmiIEF9FM6c1yi3hzKjT4LMmany4198sq1XikcQY);
+    opacity: 0.05;
+    pointer-events: none
+    }</style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-white h-screen w-screen font-display">
+<!-- Content Layer (Background/Blurred) -->
+<div class="absolute inset-0 sanctuary-blur z-0 flex flex-col">
+<!-- Top Nav -->
+<nav class="h-16 border-b border-white/10 flex items-center px-8 justify-between">
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 bg-primary rounded"></div>
+<div class="h-4 w-32 bg-white/20 rounded"></div>
+</div>
+<div class="flex gap-4">
+<div class="h-8 w-8 bg-white/10 rounded-full"></div>
+<div class="h-8 w-8 bg-white/10 rounded-full"></div>
+</div>
+</nav>
+<!-- Main Chat Area -->
+<main class="flex-1 max-w-4xl mx-auto w-full pt-12 space-y-8">
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-white/10 shrink-0"></div>
+<div class="space-y-2 flex-1">
+<div class="h-4 w-1/4 bg-white/20 rounded"></div>
+<div class="h-20 w-full bg-white/10 rounded-lg"></div>
+</div>
+</div>
+<div class="flex gap-4 flex-row-reverse">
+<div class="w-10 h-10 rounded-full bg-primary/20 shrink-0"></div>
+<div class="space-y-2 flex-1">
+<div class="h-4 w-1/4 bg-white/20 rounded ml-auto"></div>
+<div class="h-32 w-full bg-primary/10 rounded-lg"></div>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-white/10 shrink-0"></div>
+<div class="space-y-2 flex-1">
+<div class="h-4 w-1/4 bg-white/20 rounded"></div>
+<div class="h-24 w-full bg-white/10 rounded-lg"></div>
+</div>
+</div>
+</main>
+</div>
+<!-- HUD Layer (Foreground/Fixed Sidebar) -->
+<aside class="fixed right-0 top-0 bottom-0 w-[280px] hud-glass border-l border-white/10 z-50 flex flex-col shadow-2xl">
+<div class="grain-overlay absolute inset-0"></div>
+<!-- Source of Truth Component -->
+<div class="p-4 relative">
+<div class="bg-background-dark/80 border-l-4 border-primary rounded-lg p-4 shadow-lg">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-icons text-primary text-sm">Gpp_good</span>
+<h2 class="text-[10px] font-bold tracking-[0.2em] text-primary uppercase">Logic Constraint</h2>
+</div>
+<div class="space-y-3">
+<p class="text-xs text-white/90 font-medium leading-relaxed">
+                        Blueprint Integrity Locked. AI outputs restricted to validated structural schemas only.
+                    </p>
+<div class="flex items-center justify-between pt-2 border-t border-white/5">
+<span class="text-[9px] text-white/40 uppercase tracking-tighter">API Verification</span>
+<span class="text-[9px] text-green-400 font-mono">v4.2 ACTIVE</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Structural Hierarchy Tree -->
+<div class="flex-1 overflow-y-auto px-4 py-2 custom-scrollbar">
+<div class="flex items-center gap-2 mb-4">
+<span class="text-[10px] font-bold tracking-[0.2em] text-white/40 uppercase">Hierarchy Visualization</span>
+</div>
+<div class="space-y-1">
+<!-- Tree Item -->
+<div class="group flex items-center gap-2 p-2 rounded hover:bg-white/5 cursor-pointer">
+<span class="material-icons text-sm text-white/30">folder</span>
+<span class="text-xs text-white/70">Root_Stitch</span>
+</div>
+<div class="pl-4 border-l border-white/10 ml-3.5 space-y-1">
+<div class="flex items-center gap-2 p-2 rounded bg-primary/10 border border-primary/20">
+<span class="material-icons text-sm text-primary">account_tree</span>
+<span class="text-xs text-white">Logic_Gateway</span>
+</div>
+<div class="flex items-center gap-2 p-2 rounded hover:bg-white/5 cursor-pointer opacity-50">
+<span class="material-icons text-sm text-white/30">terminal</span>
+<span class="text-xs text-white/70">Schema_Buffer</span>
+</div>
+<div class="flex items-center gap-2 p-2 rounded hover:bg-white/5 cursor-pointer opacity-50">
+<span class="material-icons text-sm text-white/30">data_object</span>
+<span class="text-xs text-white/70">Intent_Parser</span>
+</div>
+</div>
+</div>
+<!-- System Metrics -->
+<div class="mt-8 pt-8 border-t border-white/5 space-y-4">
+<div>
+<div class="flex justify-between text-[9px] text-white/40 uppercase mb-1">
+<span>Structural Fidelity</span>
+<span>98.4%</span>
+</div>
+<div class="h-1 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary/60 w-[98.4%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-[9px] text-white/40 uppercase mb-1">
+<span>Constraint Tension</span>
+<span>High</span>
+</div>
+<div class="h-1 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[82%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Intentional Friction Exit Button -->
+<div class="p-4 border-t border-white/10 bg-black/20">
+<button class="relative w-full group overflow-hidden bg-white/5 hover:bg-white/10 transition-colors border border-white/10 rounded py-4 px-6">
+<div class="relative z-10 flex items-center justify-center gap-2">
+<span class="material-icons text-sm text-primary">lock_open</span>
+<span class="text-xs font-bold tracking-widest text-white/80 uppercase">Exit Sanctuary</span>
+</div>
+<!-- Progress Bar (Static Representation of long-press) -->
+<div class="absolute bottom-0 left-0 h-1 bg-primary intentional-friction-bar"></div>
+<div class="absolute bottom-0 left-0 w-full h-1 bg-white/10"></div>
+<div class="absolute inset-0 bg-primary/10 opacity-0 group-active:opacity-100 transition-opacity"></div>
+</button>
+<p class="text-[9px] text-center text-white/30 mt-3 uppercase tracking-tighter">Hold to confirm disconnection</p>
+</div>
+</aside>
+<!-- Overlay Details -->
+<div class="fixed top-8 left-8 z-50">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-primary animate-pulse"></div>
+<span class="text-xs font-bold tracking-[0.3em] uppercase opacity-80">Sanctuary Mode Active</span>
+</div>
+</div>
+<!-- Background texture or map if needed -->
+<div class="fixed inset-0 pointer-events-none opacity-20 z-[-1]">
+<img class="w-full h-full object-cover" data-alt="Abstract dark digital grid and nodes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZmJRoFAFSN62Ws4pBcFYt877X7ykGlPPnbUMEkh13m9XFn99vq3whBZJlOWoVv98T6IEJluyRetg6NZQQwajFpQh7D3D4DAepTwOmm_OXWr06oMv2SilWWo3wk1oJZCdXLkeMg8mcg9oEnG1KR5S0cqQt1w41zj3UK2_JLDLDXST0gPd1bGF5HYFjyEM07UjbturltpzGMDX_5VbEdBSIDDVCm2HicmHm5JYHE8Scx5x0xvNhtXuB-G0SN-ApGNFUk9QR4UskQFqS"/>
+</div>
+</body></html>
