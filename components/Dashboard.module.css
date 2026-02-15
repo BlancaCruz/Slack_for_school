@@ -1,0 +1,42 @@
+.viewport {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background: var(--bg-dark);
+  overflow: hidden;
+}
+
+/* When Focused Mode is active, middle panel gets ghosted */
+.viewport.focused > :nth-child(2) {
+  filter: blur(8px) grayscale(70%) brightness(0.5) !important;
+  pointer-events: none;
+  transition: filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (max-width: 1024px) {
+  .hudLayer {
+    width: 250px;
+    padding: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .viewport {
+    flex-direction: column;
+  }
+
+  .hudLayer {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-left: none;
+    border-top: 1px solid var(--border-dark);
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  .contentLayer {
+    padding: 16px;
+  }
+}

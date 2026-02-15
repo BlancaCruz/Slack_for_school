@@ -1,0 +1,120 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sectionTitle {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-gray);
+  margin-bottom: 8px;
+}
+
+.sectionTitle.urgent {
+  color: #E01E5A;
+}
+
+.sectionTitle.high {
+  color: #1164A3;
+}
+
+.sectionTitle.low {
+  color: #9ca3af;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-dark);
+  border-radius: 8px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateX(4px);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+  gap: 12px;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  flex: 1;
+}
+
+.source {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--text-gray);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.description {
+  font-size: 14px;
+  color: var(--text-gray);
+  margin-bottom: 12px;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--text-gray);
+  margin-bottom: 8px;
+}
+
+.context {
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.dueDate {
+  white-space: nowrap;
+  margin-left: 12px;
+}
+
+.dueDate.overdue {
+  color: #E01E5A;
+  font-weight: 600;
+}
+
+.status {
+  display: inline-block;
+  font-size: 11px;
+  text-transform: capitalize;
+  background: rgba(46, 204, 113, 0.1);
+  color: #2ecc71;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-gray);
+  font-size: 18px;
+}

@@ -1,0 +1,344 @@
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  background: linear-gradient(135deg, #4A154B 0%, #3a0f3b 100%);
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 12px;
+  overflow-y: auto;
+  z-index: 20;
+  flex-shrink: 0;
+}
+
+.header {
+  padding: 12px 12px 12px 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 8px;
+}
+
+.title {
+  font-size: 13px;
+  font-weight: 900;
+  color: white;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  background: #22c55e;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.username {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+}
+
+.sanctuaryBtn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  padding: 8px 12px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.sanctuaryBtn:hover {
+  background: rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.sanctuaryBtn.active {
+  background: rgba(17, 100, 163, 0.3);
+  border-color: #1164A3;
+  box-shadow: 0 0 12px rgba(17, 100, 163, 0.3);
+}
+
+.icon {
+  font-size: 16px;
+}
+
+.btnText {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.btnTitle {
+  font-size: 12px;
+  font-weight: 700;
+  color: white;
+}
+
+.btnSubtitle {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.section {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sectionTitle {
+  font-size: 9px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.4);
+  margin: 8px 0 4px 0;
+}
+
+.taskCard {
+  padding: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-left: 4px solid transparent;
+  font-size: 13px;
+}
+
+.taskCard.urgent {
+  background: rgba(224, 30, 90, 0.15);
+  border-left-color: #E01E5A;
+}
+
+.taskCard.urgent:hover {
+  background: rgba(224, 30, 90, 0.25);
+}
+
+.taskCard.high {
+  background: rgba(17, 100, 163, 0.2);
+  border-left-color: #1164A3;
+}
+
+.taskCard.high:hover {
+  background: rgba(17, 100, 163, 0.3);
+}
+
+.taskHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.taskTitle {
+  font-weight: 700;
+  color: white;
+  flex: 1;
+}
+
+.urgentBadge {
+  font-size: 7px;
+  font-weight: 900;
+  background: #E01E5A;
+  color: white;
+  padding: 2px 4px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+.taskMeta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+}
+
+.pulse {
+  width: 6px;
+  height: 6px;
+  background: #E01E5A;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.9);
+  }
+}
+
+.taskContext {
+  color: rgba(255, 150, 150, 0.9);
+  font-weight: 500;
+}
+
+.taskDescription {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.stats {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 12px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+
+.statLabel {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.statValue {
+  color: #E01E5A;
+  font-family: monospace;
+  font-weight: 700;
+  font-size: 10px;
+}
+
+.statBar {
+  width: 100%;
+  height: 6px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.statBarFill {
+  height: 100%;
+  width: 65%;
+  background: #E01E5A;
+  box-shadow: 0 0 8px rgba(224, 30, 90, 0.4);
+}
+
+.flareSection {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 8px;
+}
+
+.flareForm {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.flareInput {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  padding: 6px 8px;
+  color: white;
+  font-size: 11px;
+  font-family: inherit;
+  resize: none;
+  transition: all 0.3s ease;
+}
+
+.flareInput:focus {
+  outline: none;
+  border-color: #E01E5A;
+  background: rgba(224, 30, 90, 0.1);
+}
+
+.flareBtn {
+  background: rgba(224, 30, 90, 0.25);
+  border: 1px solid rgba(224, 30, 90, 0.5);
+  color: #ffb3c3;
+  padding: 6px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.flareBtn:hover:not(:disabled) {
+  background: rgba(224, 30, 90, 0.4);
+}
+
+.flareBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  object-fit: cover;
+}
+
+.userInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.userName {
+  font-size: 12px;
+  font-weight: 700;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.userRole {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}

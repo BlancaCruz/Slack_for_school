@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 40, "column": 0}, "map": {"version":3,"sources":["file:///Users/blancacruz/Desktop/Slack_for_school/app/api/health/route.js"],"sourcesContent":["export async function GET(req) {\n  return Response.json({\n    status: 'healthy',\n    timestamp: new Date().toISOString(),\n    version: '1.0.0'\n  });\n}\n"],"names":[],"mappings":";;;;AAAO,eAAe,IAAI,GAAG;IAC3B,OAAO,SAAS,IAAI,CAAC;QACnB,QAAQ;QACR,WAAW,IAAI,OAAO,WAAW;QACjC,SAAS;IACX;AACF"}}]
+}

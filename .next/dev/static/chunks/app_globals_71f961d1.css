@@ -1,0 +1,59 @@
+/* [project]/app/globals.css [app-client] (css) */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  --bg-dark: #0b0f14;
+  --bg-slate: #0f172a;
+  --text-white: #fff;
+  --text-gray: #9ca3af;
+  --border-dark: #ffffff1a;
+  --accent-blue: #1164a3;
+  --alert-red: #e01e5a;
+  --success-green: #2ecc71;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--bg-dark);
+  color: var(--text-white);
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+.sanctuary-active .content-layer {
+  filter: blur(12px) grayscale(80%) brightness(.4);
+  pointer-events: none;
+  transition: all .6s cubic-bezier(.16, 1, .3, 1);
+}
+
+.sanctuary-active .hud-layer {
+  border-left: 1px solid var(--border-dark);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  background: #0f172af2;
+  box-shadow: -15px 0 45px #0009;
+}
+
+.hud-layer {
+  transition: all .6s cubic-bezier(.16, 1, .3, 1);
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ffffff1a;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #fff3;
+}
+
+/*# sourceMappingURL=app_globals_71f961d1.css.map*/

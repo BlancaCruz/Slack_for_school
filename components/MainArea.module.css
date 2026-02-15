@@ -1,0 +1,192 @@
+.main {
+  flex: 1;
+  background: var(--bg-dark);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  transition: filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.header {
+  padding: 24px 32px;
+  border-bottom: 1px solid var(--border-dark);
+  flex-shrink: 0;
+}
+
+.header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: white;
+}
+
+.header p {
+  font-size: 14px;
+  color: var(--text-gray);
+}
+
+.content {
+  flex: 1;
+  padding: 24px 32px;
+  overflow-y: auto;
+}
+
+.error {
+  background: rgba(224, 30, 90, 0.1);
+  border: 1px solid var(--alert-red);
+  color: var(--alert-red);
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.loading,
+.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  color: var(--text-gray);
+  font-size: 16px;
+}
+
+.taskGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-dark);
+  border-radius: 8px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-left: 4px solid transparent;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card.urgent {
+  border-left-color: #E01E5A;
+}
+
+.card.urgent:hover {
+  background: rgba(224, 30, 90, 0.08);
+}
+
+.card.high {
+  border-left-color: #1164A3;
+}
+
+.card.high:hover {
+  background: rgba(17, 100, 163, 0.08);
+}
+
+.card.low {
+  border-left-color: var(--text-gray);
+}
+
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.cardTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  flex: 1;
+}
+
+.badge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.card.urgent .badge {
+  background: rgba(224, 30, 90, 0.25);
+  color: #ffb3c3;
+}
+
+.card.high .badge {
+  background: rgba(17, 100, 163, 0.25);
+  color: #7dd3fc;
+}
+
+.description {
+  font-size: 14px;
+  color: var(--text-gray);
+  margin-bottom: 12px;
+  flex: 1;
+}
+
+.cardMeta {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: 12px;
+}
+
+.source {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-gray);
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.context {
+  color: var(--text-gray);
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--text-gray);
+}
+
+.date {
+  color: var(--text-gray);
+}
+
+.date.overdue {
+  color: #E01E5A;
+  font-weight: 600;
+}
+
+.status {
+  background: rgba(46, 204, 113, 0.1);
+  color: #2ecc71;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: capitalize;
+}

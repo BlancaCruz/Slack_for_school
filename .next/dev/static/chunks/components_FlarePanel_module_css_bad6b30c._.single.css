@@ -1,0 +1,112 @@
+/* [project]/components/FlarePanel.module.css [app-client] (css) */
+.FlarePanel-module__BhO7pW__container {
+  border: 1px solid var(--border-dark);
+  background: #ffffff05;
+  border-radius: 8px;
+  flex-direction: column;
+  flex: 1;
+  padding: 16px;
+  display: flex;
+}
+
+.FlarePanel-module__BhO7pW__title {
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.FlarePanel-module__BhO7pW__description {
+  color: var(--text-gray);
+  margin-bottom: 12px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.FlarePanel-module__BhO7pW__form {
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+  display: flex;
+}
+
+.FlarePanel-module__BhO7pW__input {
+  border: 1px solid var(--border-dark);
+  color: var(--text-white);
+  resize: vertical;
+  background: #ffffff0d;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-family: inherit;
+  font-size: 12px;
+  transition: all .3s;
+}
+
+.FlarePanel-module__BhO7pW__input:focus {
+  border-color: var(--accent-blue);
+  background: #1164a31a;
+  outline: none;
+}
+
+.FlarePanel-module__BhO7pW__button {
+  border: 1px solid var(--border-dark);
+  color: #e01e5a;
+  cursor: pointer;
+  background: #e01e5a26;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all .3s;
+}
+
+.FlarePanel-module__BhO7pW__button:hover:not(:disabled) {
+  background: #e01e5a40;
+  border-color: #e01e5a;
+}
+
+.FlarePanel-module__BhO7pW__button:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.FlarePanel-module__BhO7pW__recent {
+  flex-direction: column;
+  flex: 1;
+  display: flex;
+}
+
+.FlarePanel-module__BhO7pW__recentTitle {
+  text-transform: uppercase;
+  color: var(--text-gray);
+  margin-bottom: 8px;
+  font-size: 11px;
+}
+
+.FlarePanel-module__BhO7pW__flareList {
+  flex-direction: column;
+  flex: 1;
+  gap: 8px;
+  display: flex;
+  overflow-y: auto;
+}
+
+.FlarePanel-module__BhO7pW__flareItem {
+  background: #e01e5a14;
+  border-left: 2px solid #e01e5a;
+  border-radius: 4px;
+  padding: 8px;
+  font-size: 11px;
+}
+
+.FlarePanel-module__BhO7pW__flareMessage {
+  color: var(--text-white);
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.FlarePanel-module__BhO7pW__flareTime {
+  color: var(--text-gray);
+  font-size: 10px;
+}
+
+/*# sourceMappingURL=components_FlarePanel_module_css_bad6b30c._.single.css.map*/

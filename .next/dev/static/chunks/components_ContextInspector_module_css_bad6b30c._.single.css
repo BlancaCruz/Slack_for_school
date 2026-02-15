@@ -1,0 +1,321 @@
+/* [project]/components/ContextInspector.module.css [app-client] (css) */
+.ContextInspector-module__qmVW_q__panel {
+  background: var(--bg-slate);
+  border-left: 1px solid var(--border-dark);
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 300px;
+  height: 100vh;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.ContextInspector-module__qmVW_q__header {
+  border-bottom: 1px solid var(--border-dark);
+  background: #0003;
+  flex-shrink: 0;
+  padding: 16px;
+}
+
+.ContextInspector-module__qmVW_q__header h2 {
+  color: #fff;
+  margin-bottom: 2px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.ContextInspector-module__qmVW_q__header p {
+  color: var(--text-gray);
+  font-size: 11px;
+}
+
+.ContextInspector-module__qmVW_q__content {
+  flex-direction: column;
+  flex: 1;
+  gap: 20px;
+  padding: 16px;
+  display: flex;
+  overflow-y: auto;
+}
+
+.ContextInspector-module__qmVW_q__section {
+  flex-direction: column;
+  gap: 12px;
+  display: flex;
+}
+
+.ContextInspector-module__qmVW_q__sectionTitle {
+  text-transform: uppercase;
+  color: var(--text-gray);
+  letter-spacing: .5px;
+  margin: 0;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.ContextInspector-module__qmVW_q__flareDropped {
+  text-align: center;
+  background: #2ecc711a;
+  border: 1px solid #2ecc71;
+  border-radius: 8px;
+  padding: 16px;
+  animation: .4s ease-out ContextInspector-module__qmVW_q__slideIn;
+}
+
+@keyframes ContextInspector-module__qmVW_q__slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ContextInspector-module__qmVW_q__checkmark {
+  margin-bottom: 8px;
+  font-size: 32px;
+  animation: .5s ease-out ContextInspector-module__qmVW_q__pop;
+}
+
+@keyframes ContextInspector-module__qmVW_q__pop {
+  0% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.ContextInspector-module__qmVW_q__flareMessage {
+  color: #2ecc71;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.ContextInspector-module__qmVW_q__flareEta {
+  color: #2ecc71cc;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  display: flex;
+}
+
+.ContextInspector-module__qmVW_q__icon {
+  font-size: 14px;
+}
+
+.ContextInspector-module__qmVW_q__flareActive {
+  background: #e01e5a1a;
+  border: 1px solid #e01e5a;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.ContextInspector-module__qmVW_q__transmitting {
+  color: #e01e5a;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+}
+
+.ContextInspector-module__qmVW_q__dot {
+  background: #e01e5a;
+  border-radius: 50%;
+  width: 8px;
+  height: 8px;
+  animation: 1.5s infinite ContextInspector-module__qmVW_q__pulse;
+}
+
+@keyframes ContextInspector-module__qmVW_q__pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: .5;
+    transform: scale(.8);
+  }
+}
+
+.ContextInspector-module__qmVW_q__flareContent {
+  flex-direction: column;
+  gap: 6px;
+  display: flex;
+}
+
+.ContextInspector-module__qmVW_q__flareText {
+  color: #ffb3c3;
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.ContextInspector-module__qmVW_q__flareTime {
+  color: var(--text-gray);
+  font-size: 10px;
+}
+
+.ContextInspector-module__qmVW_q__noFlare {
+  border: 1px solid var(--border-dark);
+  text-align: center;
+  color: var(--text-gray);
+  background: #ffffff05;
+  border-radius: 6px;
+  padding: 12px;
+  font-size: 12px;
+}
+
+.ContextInspector-module__qmVW_q__form {
+  flex-direction: column;
+  gap: 8px;
+  display: flex;
+}
+
+.ContextInspector-module__qmVW_q__input {
+  border: 1px solid var(--border-dark);
+  color: #fff;
+  resize: none;
+  background: #ffffff0d;
+  border-radius: 6px;
+  padding: 10px;
+  font-family: inherit;
+  font-size: 12px;
+  transition: all .3s;
+}
+
+.ContextInspector-module__qmVW_q__input:focus {
+  background: #e01e5a1a;
+  border-color: #e01e5a;
+  outline: none;
+  box-shadow: 0 0 8px #e01e5a33;
+}
+
+.ContextInspector-module__qmVW_q__button {
+  color: #ffb3c3;
+  cursor: pointer;
+  background: #e01e5a26;
+  border: 1px solid #e01e5a;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all .3s;
+}
+
+.ContextInspector-module__qmVW_q__button:hover:not(:disabled) {
+  background: #e01e5a40;
+  box-shadow: 0 0 12px #e01e5a4d;
+}
+
+.ContextInspector-module__qmVW_q__button:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.ContextInspector-module__qmVW_q__shieldInfo {
+  background: #1164a31a;
+  border: 1px solid #1164a34d;
+  border-radius: 8px;
+  gap: 12px;
+  padding: 12px;
+  display: flex;
+}
+
+.ContextInspector-module__qmVW_q__shieldIcon {
+  flex-shrink: 0;
+  font-size: 24px;
+}
+
+.ContextInspector-module__qmVW_q__shieldText {
+  flex-direction: column;
+  gap: 4px;
+  display: flex;
+}
+
+.ContextInspector-module__qmVW_q__shieldText strong {
+  color: #7dd3fc;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.ContextInspector-module__qmVW_q__shieldText p {
+  color: var(--text-gray);
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.ContextInspector-module__qmVW_q__focusIndicator {
+  color: #7dd3fc;
+  text-align: center;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  background: #0009;
+  border: 1px solid #71d4f34d;
+  border-radius: 6px;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+}
+
+.ContextInspector-module__qmVW_q__pulse {
+  background: #7dd3fc;
+  border-radius: 50%;
+  width: 6px;
+  height: 6px;
+  animation: 2s infinite ContextInspector-module__qmVW_q__pulse;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ffffff1a;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #fff3;
+}
+
+@media (max-width: 1400px) {
+  .ContextInspector-module__qmVW_q__panel {
+    width: 280px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .ContextInspector-module__qmVW_q__panel {
+    width: 260px;
+  }
+
+  .ContextInspector-module__qmVW_q__content {
+    gap: 16px;
+    padding: 12px;
+  }
+}
+
+/*# sourceMappingURL=components_ContextInspector_module_css_bad6b30c._.single.css.map*/

@@ -1,0 +1,101 @@
+/* [project]/components/Dashboard.module.css [app-client] (css) */
+.Dashboard-module__0qHQXq__viewport {
+  background: var(--bg-dark);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.Dashboard-module__0qHQXq__contentLayer {
+  flex-direction: column;
+  flex: 1;
+  padding: 24px;
+  transition: filter .6s cubic-bezier(.16, 1, .3, 1);
+  display: flex;
+  overflow-y: auto;
+}
+
+.Dashboard-module__0qHQXq__contentLayer.Dashboard-module__0qHQXq__sanctuary-active {
+  filter: blur(12px) grayscale(80%) brightness(.4);
+  pointer-events: none;
+}
+
+.Dashboard-module__0qHQXq__header {
+  margin-bottom: 32px;
+}
+
+.Dashboard-module__0qHQXq__header h1 {
+  margin-bottom: 8px;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.Dashboard-module__0qHQXq__header p {
+  color: var(--text-gray);
+  font-size: 14px;
+}
+
+.Dashboard-module__0qHQXq__main {
+  flex: 1;
+}
+
+.Dashboard-module__0qHQXq__error {
+  border: 1px solid var(--alert-red);
+  color: var(--alert-red);
+  background: #e01e5a1a;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  padding: 16px;
+}
+
+.Dashboard-module__0qHQXq__loading {
+  color: var(--text-gray);
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.Dashboard-module__0qHQXq__hudLayer {
+  background: var(--bg-slate);
+  border-left: 1px solid var(--border-dark);
+  flex-direction: column;
+  gap: 24px;
+  width: 280px;
+  height: 100vh;
+  padding: 24px;
+  display: flex;
+  position: fixed;
+  top: 0;
+  right: 0;
+  overflow-y: auto;
+}
+
+@media (max-width: 1024px) {
+  .Dashboard-module__0qHQXq__hudLayer {
+    width: 250px;
+    padding: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .Dashboard-module__0qHQXq__viewport {
+    flex-direction: column;
+  }
+
+  .Dashboard-module__0qHQXq__hudLayer {
+    border-left: none;
+    border-top: 1px solid var(--border-dark);
+    flex-direction: row;
+    gap: 16px;
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .Dashboard-module__0qHQXq__contentLayer {
+    padding: 16px;
+  }
+}
+
+/*# sourceMappingURL=components_Dashboard_module_5cd1af25.css.map*/
