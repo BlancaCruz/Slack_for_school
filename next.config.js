@@ -1,6 +1,4 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-}
-
-module.exports = nextConfig
+  // Force rebuild - cache bust (Feb 15, 2026)
