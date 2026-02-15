@@ -6,14 +6,16 @@
 }
 
 html {
-  --bg-dark: #0b0f14;
-  --bg-slate: #0f172a;
+  --bg-dark: #2d0e2b;
+  --bg-slate: #1a0818;
   --text-white: #fff;
-  --text-gray: #9ca3af;
-  --border-dark: #ffffff1a;
+  --text-gray: #b0a8bb;
+  --border-dark: #ffffff14;
   --accent-blue: #1164a3;
   --alert-red: #e01e5a;
   --success-green: #2ecc71;
+  --pursuit-aubergine: #4a154b;
+  --pursuit-dark: #2d0e2b;
 }
 
 body {

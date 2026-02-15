@@ -6,6 +6,21 @@ import MiddlePanel from './MiddlePanel';
 import ContextInspector from './ContextInspector';
 import styles from './Dashboard.module.css';
 
+// Safe state fallback for resilience sandbox
+const SAFE_STATE_TASKS = [
+  {
+    id: 'safe-1',
+    title: 'Code Constraints',
+    priority: 'URGENT',
+    source: 'System',
+    dueDate: '2026-02-15',
+    description: 'Review current sprint constraints',
+    context: 'Use Flare system for help',
+    status: 'in-progress',
+    assignee: 'system'
+  }
+];
+
 export default function Dashboard() {
   const [tasks, setTasks] = useState([]);
   const [flares, setFlares] = useState([]);
@@ -13,7 +28,7 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fetch tasks from API
+  // Fetch tasks from API with Resilience Sandbox validation
   useEffect(() => {
     const fetchTasks = async () => {
       try {
@@ -21,9 +36,12 @@ export default function Dashboard() {
         const res = await fetch('/api/tasks');
         if (!res.ok) throw new Error('Failed to fetch tasks');
         const data = await res.json();
-        setTasks(data.tasks || []);
+        // Validate data structure before using
+        setTasks(Array.isArray(data.tasks) && data.tasks.length > 0 ? data.tasks : SAFE_STATE_TASKS);
       } catch (err) {
         setError(err.message);
+        // Fall back to safe state on error
+        setTasks(SAFE_STATE_TASKS);
       } finally {
         setLoading(false);
       }
@@ -31,6 +49,18 @@ export default function Dashboard() {
 
     fetchTasks();
   }, []);
+
+  // Escape key interception: prevent accidental exit from Sanctuary Mode
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (sanctuary && e.key === 'Escape') {
+        e.preventDefault();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [sanctuary]);
 
   const handleFlare = async (flareData) => {
     try {

@@ -1,0 +1,172 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  background: linear-gradient(135deg, var(--pursuit-aubergine) 0%, var(--pursuit-dark) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.toggleContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Main Toggle Button */
+.button {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.button.inactive {
+  border-color: var(--text-gray);
+  background: rgba(176, 168, 187, 0.05);
+  box-shadow: 0 0 0 0 rgba(176, 168, 187, 0.1);
+}
+
+.button.inactive:hover {
+  border-color: var(--text-white);
+  background: rgba(176, 168, 187, 0.1);
+  box-shadow: 0 0 12px rgba(176, 168, 187, 0.2);
+}
+
+/* Active state: Red/Alert */
+.button.active {
+  border-color: var(--alert-red);
+  background: rgba(224, 30, 90, 0.1);
+  box-shadow: 0 0 20px rgba(224, 30, 90, 0.3);
+}
+
+.button.active:hover {
+  background: rgba(224, 30, 90, 0.15);
+  box-shadow: 0 0 28px rgba(224, 30, 90, 0.4);
+}
+
+/* SVG Progress Ring (only shows when exiting Sanctuary) */
+.progressRing {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+  color: var(--alert-red);
+}
+
+.progressBase {
+  opacity: 0.2;
+}
+
+.progressFill {
+  opacity: 1;
+  stroke-linecap: round;
+}
+
+.buttonText {
+  font-weight: 700;
+  position: relative;
+  z-index: 2;
+}
+
+/* Status Label */
+.statusLabel {
+  text-align: center;
+}
+
+.mainText {
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  color: var(--text-white);
+  margin: 0;
+}
+
+.subText {
+  font-size: 11px;
+  color: var(--text-gray);
+  margin: 4px 0 0 0;
+  font-weight: 500;
+}
+
+/* Friction Indicator - Shows progress when holding to exit */
+.frictionIndicator {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 0;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.frictionBar {
+  height: 3px;
+  background: rgba(224, 30, 90, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  border: 1px solid rgba(224, 30, 90, 0.2);
+}
+
+.frictionFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--alert-red) 0%, rgba(224, 30, 90, 0.6) 100%);
+  border-radius: 1px;
+  transition: width 0.03s linear;
+  box-shadow: 0 0 8px rgba(224, 30, 90, 0.5);
+}
+
+.frictionText {
+  font-size: 10px;
+  color: var(--text-gray);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+
+  .button {
+    width: 70px;
+    height: 70px;
+    font-size: 28px;
+  }
+
+  .mainText {
+    font-size: 12px;
+  }
+
+  .subText {
+    font-size: 10px;
+  }
+}
+

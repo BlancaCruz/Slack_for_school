@@ -5,14 +5,16 @@
 }
 
 html {
-  --bg-dark: #0b0f14;
-  --bg-slate: #0f172a;
+  --bg-dark: #2D0E2B;
+  --bg-slate: #1a0818;
   --text-white: #ffffff;
-  --text-gray: #9ca3af;
-  --border-dark: rgba(255, 255, 255, 0.1);
+  --text-gray: #b0a8bb;
+  --border-dark: rgba(255, 255, 255, 0.08);
   --accent-blue: #1164A3;
   --alert-red: #E01E5A;
   --success-green: #2ecc71;
+  --pursuit-aubergine: #4A154B;
+  --pursuit-dark: #2D0E2B;
 }
 
 body {

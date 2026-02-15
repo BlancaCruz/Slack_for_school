@@ -72,7 +72,7 @@ function Sidebar({ tasks, sanctuary, onSanctuaryChange, onFlare, recentFlares })
         const timer = setTimeout(()=>{
             onSanctuaryChange(!sanctuary);
             setIsHeld(false);
-        }, 800);
+        }, 1500); // 1.5 seconds per PRD spec
         return ()=>clearTimeout(timer);
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("aside", {
@@ -1036,13 +1036,27 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Dashboard$2e$m
 ;
 ;
 ;
+// Safe state fallback for resilience sandbox
+const SAFE_STATE_TASKS = [
+    {
+        id: 'safe-1',
+        title: 'Code Constraints',
+        priority: 'URGENT',
+        source: 'System',
+        dueDate: '2026-02-15',
+        description: 'Review current sprint constraints',
+        context: 'Use Flare system for help',
+        status: 'in-progress',
+        assignee: 'system'
+    }
+];
 function Dashboard() {
     const [tasks, setTasks] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
     const [flares, setFlares] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
     const [sanctuary, setSanctuary] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(true);
     const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
-    // Fetch tasks from API
+    // Fetch tasks from API with Resilience Sandbox validation
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         const fetchTasks = async ()=>{
             try {
@@ -1050,15 +1064,30 @@ function Dashboard() {
                 const res = await fetch('/api/tasks');
                 if (!res.ok) throw new Error('Failed to fetch tasks');
                 const data = await res.json();
-                setTasks(data.tasks || []);
+                // Validate data structure before using
+                setTasks(Array.isArray(data.tasks) && data.tasks.length > 0 ? data.tasks : SAFE_STATE_TASKS);
             } catch (err) {
                 setError(err.message);
+                // Fall back to safe state on error
+                setTasks(SAFE_STATE_TASKS);
             } finally{
                 setLoading(false);
             }
         };
         fetchTasks();
     }, []);
+    // Escape key interception: prevent accidental exit from Sanctuary Mode
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        const handleKeyDown = (e)=>{
+            if (sanctuary && e.key === 'Escape') {
+                e.preventDefault();
+            }
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        return ()=>window.removeEventListener('keydown', handleKeyDown);
+    }, [
+        sanctuary
+    ]);
     const handleFlare = async (flareData)=>{
         try {
             const res = await fetch('/api/flare', {
@@ -1088,7 +1117,7 @@ function Dashboard() {
                 onFlare: handleFlare
             }, void 0, false, {
                 fileName: "[project]/components/Dashboard.js",
-                lineNumber: 53,
+                lineNumber: 83,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$MiddlePanel$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -1098,7 +1127,7 @@ function Dashboard() {
                 isFocused: sanctuary
             }, void 0, false, {
                 fileName: "[project]/components/Dashboard.js",
-                lineNumber: 61,
+                lineNumber: 91,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ContextInspector$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -1107,13 +1136,13 @@ function Dashboard() {
                 isFocused: sanctuary
             }, void 0, false, {
                 fileName: "[project]/components/Dashboard.js",
-                lineNumber: 69,
+                lineNumber: 99,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/Dashboard.js",
-        lineNumber: 51,
+        lineNumber: 81,
         columnNumber: 5
     }, this);
 }

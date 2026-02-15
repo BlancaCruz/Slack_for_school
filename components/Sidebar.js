@@ -1,23 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import SanctuaryToggleRadix from './SanctuaryToggleRadix';
 import styles from './Sidebar.module.css';
 
 export default function Sidebar({ tasks, sanctuary, onSanctuaryChange, onFlare, recentFlares }) {
-  const [isHeld, setIsHeld] = useState(false);
-
   const urgentTasks = tasks.filter(t => t.priority === 'URGENT');
   const highTasks = tasks.filter(t => t.priority === 'HIGH');
-
-  const handleSanctuaryPress = () => {
-    setIsHeld(true);
-    const timer = setTimeout(() => {
-      onSanctuaryChange(!sanctuary);
-      setIsHeld(false);
-    }, 800);
-    
-    return () => clearTimeout(timer);
-  };
 
   return (
     <aside className={styles.sidebar}>
@@ -30,20 +18,11 @@ export default function Sidebar({ tasks, sanctuary, onSanctuaryChange, onFlare, 
         </div>
       </div>
 
-      {/* Sanctuary Mode Toggle */}
-      <button
-        className={`${styles.sanctuaryBtn} ${sanctuary ? styles.active : ''}`}
-        onMouseDown={handleSanctuaryPress}
-        onMouseUp={() => setIsHeld(false)}
-        onTouchStart={handleSanctuaryPress}
-        onTouchEnd={() => setIsHeld(false)}
-      >
-        <span className={styles.icon}>⚡</span>
-        <div className={styles.btnText}>
-          <div className={styles.btnTitle}>Focus Switch</div>
-          <div className={styles.btnSubtitle}>Enter Sanctuary</div>
-        </div>
-      </button>
+      {/* Sanctuary Mode Toggle - Using Radix UI */}
+      <SanctuaryToggleRadix 
+        sanctuary={sanctuary}
+        onSanctuaryChange={onSanctuaryChange}
+      />
 
       {/* Priority Funnel */}
       <div className={styles.section}>
