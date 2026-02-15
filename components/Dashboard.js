@@ -50,16 +50,20 @@ export default function Dashboard() {
     fetchTasks();
   }, []);
 
-  // Escape key interception: prevent accidental exit from Sanctuary Mode
+  // Global Escape key interception: prevents accidental exit from Sanctuary Mode
+  // While Sanctuary is active, Escape is blocked. User must long-press to exit.
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (sanctuary && e.key === 'Escape') {
         e.preventDefault();
+        e.stopPropagation();
+        // Optionally log or show toast that Escape is disabled
+        console.log('🛡️ Sanctuary Mode active - Escape key disabled. Use long-press to exit.');
       }
     };
 
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener('keydown', handleKeyDown, true); // Use capture phase for priority
+    return () => window.removeEventListener('keydown', handleKeyDown, true);
   }, [sanctuary]);
 
   const handleFlare = async (flareData) => {
@@ -87,15 +91,30 @@ export default function Dashboard() {
         onFlare={handleFlare}
       />
 
-      {/* Middle Panel: Flow Stage (ghosted when focused) */}
-      <MiddlePanel 
-        tasks={tasks}
-        loading={loading}
-        error={error}
-        isFocused={sanctuary}
-      />
+      {/* Middle Panel Container: Applies sanctuary-aware blur + ghosting */}
+      <div 
+        className={styles.middlePanelContainer}
+        style={sanctuary ? {
+          filter: 'blur(12px) grayscale(100%) brightness(0.4)',
+          pointerEvents: 'none',
+          opacity: 0.4,
+          transition: 'all 1000ms cubic-bezier(0.16, 1, 0.3, 1)'
+        } : {
+          filter: 'blur(0px) grayscale(0%) brightness(1)',
+          pointerEvents: 'auto',
+          opacity: 1,
+          transition: 'all 1000ms cubic-bezier(0.16, 1, 0.3, 1)'
+        }}
+      >
+        <MiddlePanel 
+          tasks={tasks}
+          loading={loading}
+          error={error}
+          isFocused={sanctuary}
+        />
+      </div>
 
-      {/* Right Panel: Context Inspector with Flare Status */}
+      {/* Right Panel: Context Inspector with Flare Status (stays clear) */}
       <ContextInspector 
         flares={flares}
         onFlare={handleFlare}

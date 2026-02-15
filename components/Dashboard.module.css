@@ -7,6 +7,14 @@
   overflow: hidden;
 }
 
+/* Middle Panel Container - responds to sanctuary state */
+.middlePanelContainer {
+  flex: 1;
+  overflow: hidden;
+  will-change: filter;
+  display: flex;
+}
+
 /* When Focused Mode is active, middle panel gets ghosted */
 .viewport.focused > :nth-child(2) {
   filter: blur(12px) grayscale(70%) brightness(0.5) !important;
