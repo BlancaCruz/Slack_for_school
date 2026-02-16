@@ -1,4 +1,1 @@
-[00:00:00.583] Server  LOG     ✓ Ready in 388ms
-[00:13:31.901] Server  ERROR   Error: write EPIPE
-[00:13:31.904] Server  ERROR   ⨯ "uncaughtException:" Error: write EPIPE
-[00:13:31.906] Server  ERROR   ⨯ "uncaughtException: " Error: write EPIPE
+[00:00:00.522] Server  LOG     ✓ Ready in 292ms

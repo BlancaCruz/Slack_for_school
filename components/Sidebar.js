@@ -3,9 +3,11 @@
 import SanctuaryToggleRadix from './SanctuaryToggleRadix';
 import styles from './Sidebar.module.css';
 
-export default function Sidebar({ tasks, sanctuary, onSanctuaryChange, onFlare, recentFlares }) {
-  const urgentTasks = tasks.filter(t => t.priority === 'URGENT');
-  const highTasks = tasks.filter(t => t.priority === 'HIGH');
+export default function Sidebar({ taskHierarchy, sanctuary, onSanctuaryChange, onFlare, recentFlares }) {
+  // Extract verification tasks (always shown with red tint)
+  const verificationTasks = taskHierarchy?.verification || [];
+  // Extract escalation tasks (shown with blue tint)
+  const escalationTasks = taskHierarchy?.escalation || [];
 
   return (
     <aside className={styles.sidebar}>
@@ -28,23 +30,32 @@ export default function Sidebar({ tasks, sanctuary, onSanctuaryChange, onFlare, 
       <div className={styles.section}>
         <h3 className={styles.sectionTitle}>Priority Funnel</h3>
         
-        {urgentTasks.map((task) => (
-          <div key={task.id} className={`${styles.taskCard} ${styles.urgent}`}>
+        {/* Verification Tasks - Red tint, critical actionability */}
+        {verificationTasks.map((task) => (
+          <div key={task.id} className={`${styles.taskCard} ${styles.verification}`} style={{
+            borderLeftColor: 'rgba(224, 30, 90, 0.5)',
+            backgroundColor: 'rgba(224, 30, 90, 0.05)'
+          }}>
             <div className={styles.taskHeader}>
               <span className={styles.taskTitle}>{task.title}</span>
-              <span className={styles.urgentBadge}>URGENT</span>
+              <span className={styles.urgentBadge} style={{backgroundColor: '#E01E5A'}}>VERIFY</span>
             </div>
             <div className={styles.taskMeta}>
               <span className={styles.pulse}></span>
-              <span className={styles.taskContext}>{task.context}</span>
+              <span className={styles.taskContext}>{task.description}</span>
             </div>
           </div>
         ))}
 
-        {highTasks.map((task) => (
-          <div key={task.id} className={`${styles.taskCard} ${styles.high}`}>
+        {/* Escalation Tasks - Blue tint, high actionability */}
+        {escalationTasks.map((task) => (
+          <div key={task.id} className={`${styles.taskCard} ${styles.escalation}`} style={{
+            borderLeftColor: 'rgba(29, 155, 209, 0.3)',
+            backgroundColor: 'rgba(29, 155, 209, 0.02)'
+          }}>
             <div className={styles.taskHeader}>
               <span className={styles.taskTitle}>{task.title}</span>
+              <span className={styles.urgentBadge} style={{backgroundColor: '#1D9BD1'}}>ESCALATE</span>
             </div>
             <div className={styles.taskDescription}>{task.description}</div>
           </div>

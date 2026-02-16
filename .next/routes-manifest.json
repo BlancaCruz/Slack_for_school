@@ -39,6 +39,24 @@
       "regex": "^/_not\\-found(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/api/flare",
+      "regex": "^/api/flare(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/flare(?:/)?$"
+    },
+    {
+      "page": "/api/health",
+      "regex": "^/api/health(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/health(?:/)?$"
+    },
+    {
+      "page": "/api/tasks",
+      "regex": "^/api/tasks(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/tasks(?:/)?$"
     }
   ],
   "dataRoutes": [],

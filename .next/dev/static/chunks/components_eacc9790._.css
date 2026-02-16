@@ -1000,6 +1000,13 @@
   overflow: hidden;
 }
 
+.Dashboard-module__0qHQXq__middlePanelContainer {
+  will-change: filter;
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
 .Dashboard-module__0qHQXq__viewport.Dashboard-module__0qHQXq__focused > :nth-child(2) {
   pointer-events: none;
   transition: filter .6s cubic-bezier(.16, 1, .3, 1);
